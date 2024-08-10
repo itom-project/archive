@@ -36,25 +36,29 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR} ${CMAKE_CURRENT
 find_package(ITOM_SDK COMPONENTS dataobject itomCommonLib itomCommonQtLib itomWidgets REQUIRED)
 include(ItomBuildMacros)
 
-# ITOM Shipment
-option(ITOM_BUILD_SHIPMENT "If ITOM is build for shipment, turn this option ON." OFF)
+# ITOM BUILD OPTIONS
+option(ITOM_BUILD_SETUP "If ITOM is build to provide a setup installer, turn this option ON." OFF)
+option(ITOM_BUILD_TEST "If ITOM is build to all Plugins to be tested, turn this option ON." OFF)
+
+#include itom_plugin_option macro
+include(${CMAKE_SOURCE_DIR}/itom/cmake/ItomPluginOption.cmake)
 
 # PCOSensicam
-if(WIN32)
-    if(BUILD_QTVERSION STREQUAL "Qt5")
-        option(PLUGIN_PCOSensicam "Build with this plugin." ${ITOM_BUILD_SHIPMENT})
-        if(PLUGIN_PCOSensicam)
-            add_subdirectory(PCOSensicam)
-        endif(PLUGIN_PCOSensicam)
-    endif(BUILD_QTVERSION STREQUAL "Qt5")
-endif()
+if(BUILD_QTVERSION STREQUAL "Qt5")
+    itom_plugin_option(PLUGIN_PCOSensicam)
+    if(PLUGIN_PCOSensicam)
+        add_subdirectory(PCOSensicam)
+    endif(PLUGIN_PCOSensicam)
+endif(BUILD_QTVERSION STREQUAL "Qt5")
+
+# QCam
+itom_plugin_option(PLUGIN_QCam)
+if(PLUGIN_QCam)
+    add_subdirectory(QCam)
+endif(PLUGIN_QCam)
 
 # USBMotion3XIII
-if(WIN32)
-    option(PLUGIN_USBMotion3XIII "Build with this plugin." ${ITOM_BUILD_SHIPMENT})
-    if(PLUGIN_USBMotion3XIII)
-        add_subdirectory(USBMotion3XIII)
-    endif(PLUGIN_USBMotion3XIII)
-endif()
-
-
+itom_plugin_option(PLUGIN_USBMotion3XIII)
+if(PLUGIN_USBMotion3XIII)
+    add_subdirectory(USBMotion3XIII)
+endif(PLUGIN_USBMotion3XIII)
