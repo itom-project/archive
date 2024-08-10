@@ -98,4 +98,5 @@ Changelog
 * itom setup 4.0.0: This plugin has been compiled using pco.sensicam SDK V601_04
 * itom setup 4.1.0: This plugin has been compiled using pco.sensicam SDK V601_04
 * itom setup 4.2.0: This plugin has been compiled using pco.sensicam SDK V601_04
-* itom setup 4.3.0: This plugin has been compiled using pco.sensicam SDK V601_04
+* itom setup 4.2.2: This plugin has been compiled using pco.sensicam SDK V601_04
+* this plugin has been archived and is not longer supported

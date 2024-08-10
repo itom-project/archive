@@ -110,3 +110,9 @@ An instance of this plugin has the following internal parameters:
     micro steps for motor 3 [1,2,4,8,16,32,64]
 **switchSettings3**: {int}
     bitmask of switch settings (bit 1: DISABLE_STOP_L, bit 2: DISABLE_STOP_R, bit 3: SOFT_STOP, bit 4: REF_RnL
+
+
+Changelog
+==========
+
+* this plugin has been archived and is not longer supported
